@@ -1,0 +1,131 @@
+.officers-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  line-height: 1px;
+}
+
+.officers-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.search {
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  width: 300px;
+}
+
+.primary {
+  display: inline-flex;
+  align-items: center;
+
+  background: #ff8c00;
+  color: #fff;
+  border: none;
+
+  padding: 2px 16px;
+  line-height: 1;         
+  font-weight: 500;
+
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.officers-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.officers-table th {
+  text-align: left;
+  padding: 12px;
+  font-size: 13px;
+  color: #777;
+}
+
+.officers-table td {
+  padding: 12px;
+  border-top: 1px solid #eee;
+}
+
+.officers-table tr:hover {
+  background: #f7fbff;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.name img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  background: #ff8c00;
+  color: #ffffff;
+
+  border: 1px solid #ff8c00;
+  border-radius: 8px;
+
+  padding: 16px 28px;
+  font-size: 13px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+  background: #ff8c00;
+  color: #fff;
+}
+
+.filter-btn:active {
+  transform: translateY(1px);
+}
+
+/* add */
+.add-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  background: #ff8c00;
+  color: #ffffff;
+
+  border: 1px solid #ff8c00;
+  border-radius: 8px;
+
+  padding: 16px 28px;
+  font-size: 13px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-right: 20;
+}
+
+.add-btn:hover {
+  background: #ff8c00;
+  color: #fff;
+}
+
+.add-btn:active {
+  transform: translateY(1px);
+}
+
+/* officer-header */
+
+.officer-header {
+  margin-bottom: 10;
+}
