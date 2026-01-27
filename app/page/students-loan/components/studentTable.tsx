@@ -20,10 +20,7 @@ const StudentTable = ({ data }: Props) => {
       <tbody>
         {data.map((s) => (
           <tr key={s.id}>
-            <td className="name">
-              <img src={s.avatar ?? "/avatar.png"} />
-              {s.name}
-            </td>
+            <td className="name">{s.name}</td>
             <td>{s.studentId}</td>
             <td>{s.email}</td>
             <td>{s.campus}</td>
