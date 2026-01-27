@@ -1,7 +1,8 @@
 .student-header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  line-height: 1px;
 }
 
 .student-header .right {

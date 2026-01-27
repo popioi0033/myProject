@@ -21,10 +21,7 @@ const OfficersTable = ({ data }: Props) => {
       <tbody>
         {data.map((officer) => (
           <tr key={officer.id}>
-            <td className="name">
-              <img src={officer.avatar ?? "/avatar.png"} alt="" />
-              {officer.name}
-            </td>
+            <td className="name">{officer.name}</td>
             <td>{officer.institute}</td>
             <td>{officer.officerId}</td>
             <td>{officer.email}</td>

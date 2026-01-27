@@ -1,7 +1,6 @@
 const StudentDetail = () => {
   return (
     <aside className="student-detail">
-      <img src="/avatar.png" className="avatar" />
       <h3>Cody Fisher</h3>
       <p className="role">Science student</p>
 

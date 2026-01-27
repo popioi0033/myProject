@@ -10,8 +10,8 @@ const Sidebar = () => {
     { label: "Dashboard", href: "/page/dashboard/" },
     { label: "Officers", href: "/page/officers" },
     { label: "Students loan", href: "/page/students-loan" },
-    { label: "Remaining students", href: "/remaining" },
-    { label: "Settings", href: "/settings" },
+    { label: "Remaining students", href: "" },
+    { label: "Settings", href: "" },
   ];
 
   return (
