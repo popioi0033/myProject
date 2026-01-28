@@ -1,78 +1,135 @@
+import { useState } from "react";
+import { OfficerService } from "@/app/service/officer/officerService";
+import { CreateOfficerPayload } from "../../../service/officer/officerType"
 type AddOfficersFormProps = {
     onClose: () => void;
 };
 
 const AddOfficersForm = ({ onClose }: AddOfficersFormProps) => {
-    const faculties = [
-        { id: 1, name: "Faculty of Engineering" },
-        { id: 2, name: "Faculty of Science" },
-        { id: 3, name: "Faculty of Business Administration" },
-    ];
+
+    const [form, setForm] = useState<CreateOfficerPayload>({
+        officerCode: "",
+        name: "",
+        email: "",
+        institute: "",
+        jobPosition: "",
+        phone: "",
+        role: "ADMIN",
+    });
+
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    ) => {
+        const { name, value } = e.target;
+        setForm(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        try {
+            await OfficerService.createOfficer(form);
+            onClose();
+        } catch (err) {
+            console.error(err);
+            alert("Create officer failed");
+        }
+    };
 
     return (
-        <form className="officer-form">
-            <div className="officer-form-header">
-                <h1>Add Students</h1>
-            </div>
+        <div className="modal-overlay">
+            <form className="officer-form" onSubmit={handleSubmit}>
+                {/* close button */}
+                <button
+                    type="button"
+                    className="close-btn"
+                    onClick={onClose}
+                >
+                    ✕
+                </button>
 
-            <div className="form-row">
-                {/* ===== row 1 ===== */}
-                <div className="form-field span-2">
-                    <label htmlFor="studentId">Student ID</label>
-                    <input id="studentId" />
-                </div>
+                <div className="form-row">
+                    {/* Full name */}
+                    <div className="form-field span-4">
+                        <label htmlFor="name">Full Name</label>
+                        <input
+                            id="name"
+                            name="name"
+                            value={form.name}
+                            onChange={handleChange}
+                        />
+                    </div>
 
-                <div className="form-field faculty">
-                    <label htmlFor="faculty">Faculty</label>
-                    <select id="faculty">...</select>
-                </div>
+                    {/* Email */}
+                    <div className="form-field span-2">
+                        <label htmlFor="email">Email address</label>
+                        <input
+                            id="email"
+                            name="email"
+                            value={form.email}
+                            onChange={handleChange}
+                        />
+                    </div>
 
-                <div className="form-field campus">
-                    <label htmlFor="campus">Campus</label>
-                    <select id="campus">
-                        <option value="">select campus</option>
-                        <option value="">A</option>
-                        <option value="">B</option>
-                    </select>
-                </div>
+                    {/* Institute */}
+                    <div className="form-field span-1">
+                        <label htmlFor="institute">Institute</label>
+                        <select
+                            id="institute"
+                            name="institute"
+                            value={form.institute}
+                            onChange={handleChange}
+                        >
+                            <option value="">Select</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                        </select>
+                    </div>
 
-                {/* ===== row 2+ (auto 2 ช่อง) ===== */}
-                <div className="form-field">
-                    <label htmlFor="name">Name</label>
-                    <input id="name" name="name" />
-                </div>
+                    {/* Officer Code */}
+                    <div className="form-field span-1">
+                        <label htmlFor="officerCode">Officer ID</label>
+                        <input
+                            id="officerCode"
+                            name="officerCode"
+                            value={form.officerCode}
+                            onChange={handleChange}
+                        />
+                    </div>
 
-                <div className="form-field">
-                    <label htmlFor="email">Email</label>
-                    <input id="email" name="email" type="email" />
-                </div>
+                    {/* Job position */}
+                    <div className="form-field span-2">
+                        <label htmlFor="jobPosition">Job position</label>
+                        <input
+                            id="jobPosition"
+                            name="jobPosition"
+                            value={form.jobPosition}
+                            onChange={handleChange}
+                        />
+                    </div>
 
-                <div className="form-field">
-                    <label htmlFor="branch">Branch</label>
-                    <input id="branch" name="branch" />
-                </div>
+                    {/* Phone */}
+                    <div className="form-field span-2">
+                        <label htmlFor="phone">Phone Number</label>
+                        <input
+                            id="phone"
+                            name="phone"
+                            value={form.phone}
+                            onChange={handleChange}
+                        />
+                    </div>
 
-                <div className="form-field">
-                    <label htmlFor="degree-level">Degree Level</label>
-                    <input id="degree-level" type="number" />
+                    {/* Actions */}
+                    <div className="form-actions span-4">
+                        <button type="submit" className="primary">
+                            Confirm
+                        </button>
+                    </div>
                 </div>
-
-                <div className="form-field">
-                    <label htmlFor="year">Year</label>
-                    <input id="year" type="number" />
-                </div>
-
-                <div className="form-field">
-                    <label htmlFor="gpax">GPAX</label>
-                    <input id="gpax" type="number" />
-                </div>
-
-                <div className="close">
-                    <button type="button" onClick={onClose}>X</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     );
+
 };
 
 export default AddOfficersForm;
