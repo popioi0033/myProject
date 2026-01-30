@@ -238,3 +238,19 @@
 .close-btn:hover {
   color: #000;
 }
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.form-actions .primary {
+  height: 42px;
+  padding: 0 28px;
+  font-size: 14px;
+}
+
+.form-field input[type="password"] {
+  letter-spacing: 0.3px;
+}

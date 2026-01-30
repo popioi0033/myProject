@@ -1,6 +1,5 @@
 import "./globals.css";
-import Sidebar from "./components/sidbar";
-import Topbar from "./components/topbar";
+import ClientLayoutWrapper from "./components/layoutWrapper";
 
 export const metadata = {
   title: "Dashboard",
@@ -14,16 +13,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="app">
-          <Sidebar />
-
-          <div className="main">
-            <Topbar />
-            <div className="content">{children}</div>
-          </div>
-
-          <button className="support">🎧 Support</button>
-        </div>
+        <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
       </body>
     </html>
   );

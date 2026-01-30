@@ -5,5 +5,7 @@ export type CreateOfficerPayload = {
   institute: string;
   jobPosition: string;
   phone: string;
+  username: string;
+  password: string;
   role: "ADMIN" | "STAFF";
 };

@@ -14,8 +14,11 @@ const AddOfficersForm = ({ onClose }: AddOfficersFormProps) => {
         institute: "",
         jobPosition: "",
         phone: "",
+        username: "",
+        password: "",
         role: "ADMIN",
     });
+
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -27,6 +30,16 @@ const AddOfficersForm = ({ onClose }: AddOfficersFormProps) => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
+        if (
+            !form.name ||
+            !form.officerCode ||
+            !form.username ||
+            !form.password
+        ) {
+            alert("Please fill required fields");
+            return;
+        }
+
         try {
             await OfficerService.createOfficer(form);
             onClose();
@@ -35,6 +48,7 @@ const AddOfficersForm = ({ onClose }: AddOfficersFormProps) => {
             alert("Create officer failed");
         }
     };
+
 
     return (
         <div className="modal-overlay">
@@ -119,12 +133,38 @@ const AddOfficersForm = ({ onClose }: AddOfficersFormProps) => {
                         />
                     </div>
 
+                    {/* Username */}
+                    <div className="form-field span-2">
+                        <label htmlFor="username">Username</label>
+                        <input
+                            id="username"
+                            name="username"
+                            placeholder="Enter username"
+                            value={form.username}
+                            onChange={handleChange}
+                        />
+                    </div>
+
+                    {/* Password */}
+                    <div className="form-field span-2">
+                        <label htmlFor="password">Password</label>
+                        <input
+                            id="password"
+                            name="password"
+                            type="password"
+                            placeholder="Enter password"
+                            value={form.password}
+                            onChange={handleChange}
+                        />
+                    </div>
+
                     {/* Actions */}
                     <div className="form-actions span-4">
                         <button type="submit" className="primary">
                             Confirm
                         </button>
                     </div>
+
                 </div>
             </form>
         </div>
