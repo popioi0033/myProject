@@ -19,4 +19,28 @@ export const OfficerService = {
 
     return res.json();
   },
+  getOfficers: async ({
+    page = 1,
+    limit = 10,
+    search = "",
+  }: {
+    page?: number;
+    limit?: number;
+    search?: string;
+  } = {}) => {
+    const params = new URLSearchParams({
+      page: String(page),
+      limit: String(limit),
+      search,
+    });
+
+    const res = await fetch(`${BASE_URL}/get?${params}`);
+
+    if (!res.ok) {
+      const error = await res.text();
+      throw new Error(error || "Get officers failed");
+    }
+
+    return res.json(); 
+  },
 };

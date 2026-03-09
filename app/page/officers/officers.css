@@ -254,3 +254,53 @@
 .form-field input[type="password"] {
   letter-spacing: 0.3px;
 }
+
+/* -------- Success Modal -------- */
+.success-modal {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 48px 40px;
+    width: 360px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    animation: popIn 0.25s ease;
+}
+
+@keyframes popIn {
+    from { opacity: 0; transform: scale(0.88); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+.success-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #fff4e8;
+    color: #ff8c00;
+    font-size: 28px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.success-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 8px;
+}
+
+.success-desc {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 28px;
+    line-height: 1.5;
+}
+
+.success-close-btn {
+    height: 42px;
+    padding: 0 36px;
+    font-size: 14px;
+}
