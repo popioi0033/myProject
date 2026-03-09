@@ -7,3 +7,10 @@ export interface Officer {
   contact: string;
   avatar?: string;
 }
+
+export interface Pagination {
+  total: number;
+  page: number;
+  limit: number;
+  totalPages: number;
+}
