@@ -32,7 +32,7 @@ export default function OfficersPage() {
 
   return (
     <div className="officers-page">
-      <OfficersHeader />
+      <OfficersHeader onSuccess={() => fetchOfficers(pagination.page)} />
       {loading ? (
         <p className="loading-text">Loading...</p>
       ) : (

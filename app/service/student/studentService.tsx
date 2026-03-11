@@ -1,4 +1,4 @@
-import { Faculty, AddStudentPayload, Student } from "./studentType";
+import { Faculty, AddStudentPayload, Student ,StudentResponse} from "./studentType";
 
 const BASE_URL = "http://localhost:3001/api";
 
@@ -30,5 +30,30 @@ export const StudentService = {
 
     const json = await res.json();
     return json.student;
+  },
+
+  getStudent: async ({
+    page = 1,
+    limit = 10,
+    search = "",
+  }: {
+    page?: number;
+    limit?: number;
+    search?: string;
+  } = {}): Promise<StudentResponse> => {
+    const params = new URLSearchParams({
+      page: String(page),
+      limit: String(limit),
+      search,
+    });
+
+    const res = await fetch(`${BASE_URL}/students/get?${params}`);
+
+    if (!res.ok) {
+      const error = await res.text();
+      throw new Error(error || "Get officers failed");
+    }
+
+    return res.json(); 
   },
 };

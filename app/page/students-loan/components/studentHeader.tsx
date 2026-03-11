@@ -2,7 +2,11 @@
 import { useState } from "react";
 import AddStudentForm from "./addStudentForm";
 
-const StudentHeader = () => {
+type StudentHeaderProps = {
+  onSuccess: () => void;
+};
+
+const StudentHeader = ({ onSuccess }: StudentHeaderProps) => {
   const [showForm, setShowForm] = useState(false);
 
   return (
@@ -26,7 +30,7 @@ const StudentHeader = () => {
 
       {showForm && (
         <div className="modal-overlay">
-          <AddStudentForm onClose={() => setShowForm(false)} />
+          <AddStudentForm onClose={() => setShowForm(false)} onSuccess={onSuccess} />
         </div>
       )}
     </>

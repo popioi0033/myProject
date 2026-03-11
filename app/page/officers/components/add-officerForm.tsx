@@ -4,9 +4,10 @@ import { CreateOfficerPayload } from "../../../service/officer/officerType";
 
 type AddOfficersFormProps = {
     onClose: () => void;
+    onSuccess: () => void; 
 };
 
-const AddOfficersForm = ({ onClose }: AddOfficersFormProps) => {
+const AddOfficersForm = ({ onClose ,onSuccess}: AddOfficersFormProps) => {
     const [form, setForm] = useState<CreateOfficerPayload>({
         officerCode: "",
         name: "",
@@ -19,7 +20,7 @@ const AddOfficersForm = ({ onClose }: AddOfficersFormProps) => {
         role: "ADMIN",
     });
 
-    const [showSuccess, setShowSuccess] = useState(false); // 👈 เพิ่ม
+    const [showSuccess, setShowSuccess] = useState(false);
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -38,14 +39,14 @@ const AddOfficersForm = ({ onClose }: AddOfficersFormProps) => {
 
         try {
             await OfficerService.createOfficer(form);
-            setShowSuccess(true); // 👈 แสดง success modal แทน onClose()
+            onSuccess();
+            setShowSuccess(true); 
         } catch (err) {
             console.error(err);
             alert("Create officer failed");
         }
     };
 
-    // 👇 Success Modal
     if (showSuccess) {
         return (
             <div className="success-modal">
