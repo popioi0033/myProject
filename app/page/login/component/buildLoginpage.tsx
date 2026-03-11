@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import "../login.css";
+import {AuthService} from "@/app/service/login/authService"
 
 const LoginPage = () => {
   const router = useRouter();
@@ -25,8 +26,12 @@ const LoginPage = () => {
     return;
   }
 
-  // mock login ผ่าน
-  router.push("/page/dashboard");
+  try {
+    await AuthService.login(form.username, form.password);
+    router.push("/page/dashboard");
+  } catch (err) {
+    alert("Invalid username or password");
+  }
 };
 
 

@@ -2,7 +2,10 @@
 import AddOfficersForm from "./add-officerForm";
 import { useState } from "react";
 
-const OfficersHeader = () => {
+type OfficersHeaderProps = {
+  onSuccess: () => void;
+};
+const OfficersHeader = ({ onSuccess }: OfficersHeaderProps) => {
   const [showForm, setShowForm] = useState(false);
   return (
     <div className="officers-header">
@@ -13,7 +16,7 @@ const OfficersHeader = () => {
       </div>
       {showForm && (
         <div className="modal-overlay">
-          <AddOfficersForm onClose={() => setShowForm(false)} />
+          <AddOfficersForm onClose={() => setShowForm(false)} onSuccess={onSuccess}/>
         </div>
       )}
       <div className="officers-actions">

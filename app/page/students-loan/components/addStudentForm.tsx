@@ -5,9 +5,10 @@ import { Faculty, AddStudentPayload } from "../../../service/student/studentType
 
 type AddStudentFormProps = {
     onClose: () => void;
+    onSuccess: () => void;
 };
 
-const AddStudentForm = ({ onClose }: AddStudentFormProps) => {
+const AddStudentForm = ({ onClose ,onSuccess}: AddStudentFormProps) => {
     const [faculties, setFaculties] = useState<Faculty[]>([]);
     const [form, setForm] = useState<AddStudentPayload>({
         studentCode: "",
@@ -42,6 +43,7 @@ const AddStudentForm = ({ onClose }: AddStudentFormProps) => {
 
         try {
             await StudentService.addStudent(form);
+            onSuccess();
             setShowSuccess(true);
         } catch (err) {
             console.error(err);
@@ -63,10 +65,10 @@ const AddStudentForm = ({ onClose }: AddStudentFormProps) => {
     }
 
     return (
-        <form className="officer-form" onSubmit={handleSubmit}>
+        <form className="student-form" onSubmit={handleSubmit}>
             <button type="button" className="close-btn" onClick={onClose}>✕</button>
 
-            <div className="officer-form-header">
+            <div className="student-form-header">
                 <h1>Add Students</h1>
             </div>
 

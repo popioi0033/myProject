@@ -19,5 +19,16 @@ export type Student = {
   last_name: string;
   email: string;
   phone: string;
-  faculty_id: number;
+  faculty_id?: number;    // addStudent
+  faculty_name?: string;  // getStd (JOIN faculties)
+};
+
+export type StudentResponse = {
+  data: Student[];
+  pagination: {
+    total: number;
+    page: number;
+    limit: number;
+    totalPages: number;
+  };
 };

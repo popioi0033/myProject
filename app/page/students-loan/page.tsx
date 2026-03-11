@@ -1,35 +1,52 @@
+"use client";
+import { useState, useEffect } from "react";
 import StudentHeader from "./components/studentHeader";
 import StudentTable from "./components/studentTable";
-import StudentDetail from "./components/studentDetail";
 import "./studentLoan.css";
-
-const mockData = [
-  {
-    id: "1",
-    name: "Enth Mercy",
-    studentId: "703703",
-    email: "michelle.rivera@example.com",
-    campus: "JS 2",
-    faculty: "a",
-  },
-  {
-    id: "2",
-    name: "Cody Fisher",
-    studentId: "542030",
-    email: "tim.jennings@example.com",
-    campus: "SS 3",
-    faculty: "a",
-  },
-];
+import { Student, StudentResponse } from "@/app/service/student/studentType";
+import { StudentService } from "@/app/service/student/studentService";
 
 export default function StudentLoanPage() {
+  const [data, setData] = useState<Student[]>([]);
+  const [pagination, setPagination] = useState({ total: 0, page: 1, limit: 10, totalPages: 1 });
+  const [loading, setLoading] = useState(true);
+
+  const fetchStudents = async (page: number) => {
+    try {
+      setLoading(true);
+      const res: StudentResponse = await StudentService.getStudent({ page, limit: 10 });
+      setData(res.data);
+      setPagination(res.pagination);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchStudents(1);
+  }, []);
+
   return (
     <>
-      <StudentHeader />
-
+      <StudentHeader onSuccess={() => fetchStudents(pagination.page)} />
       <div className="student-layout">
-        <StudentTable data={mockData} />
-        <StudentDetail />
+    
+        <div>
+          {loading ? (
+            <p className="loading-text">Loading...</p>
+          ) : (
+            <>
+              <StudentTable data={data} />
+              <div className="pagination">
+                <button onClick={() => fetchStudents(pagination.page - 1)} disabled={pagination.page === 1}>←</button>
+                <span>Page {pagination.page} of {pagination.totalPages}</span>
+                <button onClick={() => fetchStudents(pagination.page + 1)} disabled={pagination.page === pagination.totalPages}>→</button>
+              </div>
+            </>
+          )}
+        </div>
       </div>
     </>
   );
