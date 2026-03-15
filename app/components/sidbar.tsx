@@ -9,8 +9,8 @@ const Sidebar = () => {
   const menu = [
     { label: "Dashboard", href: "/page/dashboard/" },
     { label: "Officers", href: "/page/officers" },
-    { label: "Students loan", href: "/page/students-loan" },
-    { label: "Remaining students", href: "" },
+    { label: "Students loan", href: "/page/students" },
+    { label: "tracking loan", href: "/page/loan-request" },
     { label: "Settings", href: "" },
   ];
 

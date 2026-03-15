@@ -8,6 +8,7 @@ export const AuthService = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),
+      credentials: "include",  // 👈 รับ httpOnly cookie จาก backend
     });
 
     if (!res.ok) {
@@ -15,19 +16,13 @@ export const AuthService = {
     }
 
     const json = await res.json();
-
-    // เก็บ token ใน cookie
-    document.cookie = `token=${json.token}; path=/; max-age=${60 * 60}`; // 1 ชั่วโมง
-
-    return json.user;
+    return json.user;  // ไม่ต้องจัดการ token เองแล้ว
   },
 
-  logout: () => {
-    document.cookie = "token=; path=/; max-age=0";
-  },
-
-  getToken: () => {
-    const match = document.cookie.match(/(?:^|;\s*)token=([^;]*)/);
-    return match ? match[1] : null;
+  logout: async () => {
+    await fetch(`${BASE_URL}/auth/logout`, {
+      method: "POST",
+      credentials: "include",  // 👈
+    });
   },
 };

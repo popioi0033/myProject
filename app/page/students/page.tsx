@@ -10,6 +10,7 @@ export default function StudentLoanPage() {
   const [data, setData] = useState<Student[]>([]);
   const [pagination, setPagination] = useState({ total: 0, page: 1, limit: 10, totalPages: 1 });
   const [loading, setLoading] = useState(true);
+  const [selectedStudent, setSelectedStudent] = useState<Student | null>(null); 
 
   const fetchStudents = async (page: number) => {
     try {
@@ -38,7 +39,7 @@ export default function StudentLoanPage() {
             <p className="loading-text">Loading...</p>
           ) : (
             <>
-              <StudentTable data={data} />
+              <StudentTable data={data} onAddRequest={() => fetchStudents(pagination.page)} />
               <div className="pagination">
                 <button onClick={() => fetchStudents(pagination.page - 1)} disabled={pagination.page === 1}>←</button>
                 <span>Page {pagination.page} of {pagination.totalPages}</span>
@@ -48,6 +49,17 @@ export default function StudentLoanPage() {
           )}
         </div>
       </div>
+       {selectedStudent && (
+        <div className="modal-overlay">
+          <div className="student-form">
+            <button className="close-btn" onClick={() => setSelectedStudent(null)}>✕</button>
+            <h2>Add Loan Request</h2>
+            <p>Student: <strong>{selectedStudent.first_name} {selectedStudent.last_name}</strong></p>
+            <p>ID: {selectedStudent.student_code}</p>
+            {/* form เพิ่ม loan request ทำต่อตรงนี้ */}
+          </div>
+        </div>
+      )}
     </>
   );
 }

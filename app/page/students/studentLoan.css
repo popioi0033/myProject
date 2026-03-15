@@ -304,3 +304,20 @@
   height: 42px;
   padding: 0 36px;
 }
+
+.add-request-btn {
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  color: #ff8c00;
+  border: 1px solid #ff8c00;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.add-request-btn:hover {
+  background: #fff4e8;
+}
