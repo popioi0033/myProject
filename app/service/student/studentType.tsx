@@ -32,3 +32,32 @@ export type StudentResponse = {
     totalPages: number;
   };
 };
+
+export type AddRequestPayload = {
+  studentId: number;
+  academicYear: string;
+  semester: number;
+};
+
+export type LoanRequest = {
+  id: number;
+  academic_year: string;
+  semester: number;
+  created_at: string;
+  first_name: string;
+  last_name: string;
+  student_code: string;
+  officer_name: string;
+  status: string;
+  status_code: string;
+};
+
+export type LoanRequestResponse = {
+  data: LoanRequest[];
+  pagination: {
+    total: number;
+    page: number;
+    limit: number;
+    totalPages: number;
+  };
+};
