@@ -121,4 +121,8 @@ export const StudentService = {
 
     return res.json();
   },
+  exportExcel: (search = "", status = "") => {
+  const params = new URLSearchParams({ search, status });
+  window.open(`${BASE_URL}/students/export-request?${params}`, "_blank");
+},
 };
