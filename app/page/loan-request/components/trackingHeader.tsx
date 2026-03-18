@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
+import { StudentService } from "@/app/service/student/studentService";
 
 type TrackingHeaderProps = {
   statusFilter: string[];
@@ -17,7 +18,6 @@ const TrackingHeader = ({ statusFilter, onFilterChange }: TrackingHeaderProps) =
     { code: "REJECTED", label: "ปฏิเสธ" },
   ];
 
-  // ปิด dropdown เมื่อคลิกนอก
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
@@ -32,10 +32,7 @@ const TrackingHeader = ({ statusFilter, onFilterChange }: TrackingHeaderProps) =
     <div className="student-header">
       <div className="left">
         <div className="filter-dropdown-wrapper" ref={dropdownRef}>
-          <button
-            className="filter-btn"
-            onClick={() => setShowDropdown(prev => !prev)}
-          >
+          <button className="filter-btn" onClick={() => setShowDropdown(prev => !prev)}>
             Filter
             {statusFilter.length > 0 && (
               <span className="filter-count">{statusFilter.length}</span>
@@ -62,7 +59,12 @@ const TrackingHeader = ({ statusFilter, onFilterChange }: TrackingHeaderProps) =
 
       <div className="right">
         <input className="search" placeholder="Search by student name or ID" />
-        <button className="link">Export excel</button>
+        <button
+          className="link"
+          onClick={() => StudentService.exportExcel("", statusFilter.join(","))}
+        >
+          Export excel
+        </button>
       </div>
     </div>
   );
