@@ -39,3 +39,115 @@
   background: #e8f5e9;
   color: #2e7d32;
 }
+
+.detail-section {
+  margin-bottom: 24px;
+}
+
+.detail-section-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 24px;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.detail-item span {
+  font-size: 12px;
+  color: #888;
+}
+
+.detail-item strong {
+  font-size: 14px;
+  color: #111;
+}
+
+.detail-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.reject-btn {
+  padding: 8px 24px;
+  border: 1px solid #e53e3e;
+  color: #e53e3e;
+  background: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.reject-btn:hover {
+  background: #fff5f5;
+}
+
+.status-badge.rejected {
+  background: #fff5f5;
+  color: #e53e3e;
+}
+.filter-dropdown-wrapper {
+  position: relative;
+}
+
+.filter-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  color: #ff8c00;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+  margin: 0 4px;
+}
+
+.filter-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  padding: 8px 0;
+  min-width: 180px;
+  z-index: 100;
+}
+
+.filter-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+}
+
+.filter-dropdown-item:hover {
+  background: #f9f9f9;
+}
+
+.filter-dropdown-item input[type="checkbox"] {
+  accent-color: #ff8c00;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}

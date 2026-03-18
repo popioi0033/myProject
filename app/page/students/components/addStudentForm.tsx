@@ -8,7 +8,7 @@ type AddStudentFormProps = {
     onSuccess: () => void;
 };
 
-const AddStudentForm = ({ onClose ,onSuccess}: AddStudentFormProps) => {
+const AddStudentForm = ({ onClose, onSuccess }: AddStudentFormProps) => {
     const [faculties, setFaculties] = useState<Faculty[]>([]);
     const [form, setForm] = useState<AddStudentPayload>({
         studentCode: "",
@@ -17,6 +17,9 @@ const AddStudentForm = ({ onClose ,onSuccess}: AddStudentFormProps) => {
         email: "",
         phone: "",
         facultyCode: "",
+        gpax: undefined,
+        year: undefined,
+        branch: "",
     });
     const [showSuccess, setShowSuccess] = useState(false);
 
@@ -146,6 +149,37 @@ const AddStudentForm = ({ onClose ,onSuccess}: AddStudentFormProps) => {
                         id="phone"
                         name="phone"
                         value={form.phone}
+                        onChange={handleChange}
+                    />
+                </div>
+
+                <div className="form-field span-2">
+                    <label htmlFor="branch">Branch</label>
+                    <input id="branch" name="branch" value={form.branch} onChange={handleChange} />
+                </div>
+
+                <div className="form-field span-1">
+                    <label htmlFor="year">Year</label>
+                    <select id="year" name="year" value={form.year ?? ""} onChange={handleChange}>
+                        <option value="">Select year</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+
+                <div className="form-field span-1">
+                    <label htmlFor="gpax">GPAX</label>
+                    <input
+                        id="gpax"
+                        name="gpax"
+                        type="number"
+                        min="0"
+                        max="4"
+                        step="0.01"
+                        placeholder="0.00"
+                        value={form.gpax ?? ""}
                         onChange={handleChange}
                     />
                 </div>

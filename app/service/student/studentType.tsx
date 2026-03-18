@@ -10,6 +10,9 @@ export type AddStudentPayload = {
   email: string;
   phone: string;
   facultyCode: string;
+  gpax?: number;
+  year?: number;
+  branch?: string; 
 };
 
 export type Student = {
@@ -44,9 +47,15 @@ export type LoanRequest = {
   academic_year: string;
   semester: number;
   created_at: string;
+  student_code: string;
   first_name: string;
   last_name: string;
-  student_code: string;
+  email: string;
+  phone: string;
+  year: number;
+  branch: string;
+  gpax: number;
+  faculty_name: string;
   officer_name: string;
   status: string;
   status_code: string;
@@ -60,4 +69,9 @@ export type LoanRequestResponse = {
     limit: number;
     totalPages: number;
   };
+};
+
+export type UpdateStatusPayload = {
+  requestId: number;
+  action: "next" | "reject";
 };
