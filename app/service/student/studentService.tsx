@@ -1,4 +1,12 @@
-import { Faculty, AddStudentPayload, Student ,StudentResponse, AddRequestPayload,LoanRequest,LoanRequestResponse} from "./studentType";
+import { 
+  Faculty, 
+  AddStudentPayload, 
+  Student, 
+  StudentResponse, 
+  AddRequestPayload, 
+  LoanRequest, 
+  LoanRequestResponse, 
+  UpdateStatusPayload } from "./studentType";
 
 const BASE_URL = "http://localhost:3001/api";
 
@@ -54,36 +62,39 @@ export const StudentService = {
       throw new Error(error || "Get officers failed");
     }
 
-    return res.json(); 
+    return res.json();
   },
   addRequest: async (data: AddRequestPayload): Promise<void> => {
     const res = await fetch(`${BASE_URL}/students/add-request`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify(data),
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify(data),
     });
 
     if (!res.ok) {
-        const error = await res.text();
-        throw new Error(error || "Add request failed");
+      const error = await res.text();
+      throw new Error(error || "Add request failed");
     }
 
     return res.json();
-},
+  },
   getRequest: async ({
     page = 1,
     limit = 10,
     search = "",
+    status = "PENDING,REVIEWING",
   }: {
     page?: number;
     limit?: number;
     search?: string;
+    status?: string;
   } = {}): Promise<LoanRequestResponse> => {
     const params = new URLSearchParams({
       page: String(page),
       limit: String(limit),
       search,
+      status,
     });
 
     const res = await fetch(`${BASE_URL}/students/get-request?${params}`);
@@ -91,6 +102,21 @@ export const StudentService = {
     if (!res.ok) {
       const error = await res.text();
       throw new Error(error || "Get request failed");
+    }
+
+    return res.json();
+  },
+  updateStatus: async (data: UpdateStatusPayload): Promise<void> => {
+    const res = await fetch(`${BASE_URL}/students/update-status`, {
+      method: "PUT",  // 👈 ตรงกับ route
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify(data),
+    });
+
+    if (!res.ok) {
+      const error = await res.text();
+      throw new Error(error || "Update status failed");
     }
 
     return res.json();
