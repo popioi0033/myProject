@@ -2,9 +2,9 @@ export interface Officer {
   id: string;
   name: string;
   institute: string;
-  officerId: string;
+  officer_code: string;
   email: string;
-  contact: string;
+  phone: string;
   avatar?: string;
 }
 

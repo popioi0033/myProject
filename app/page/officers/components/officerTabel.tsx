@@ -23,9 +23,9 @@ const OfficersTable = ({ data }: Props) => {
           <tr key={officer.id}>
             <td className="name">{officer.name}</td>
             <td>{officer.institute}</td>
-            <td>{officer.officerId}</td>
+            <td>{officer.officer_code}</td>
             <td>{officer.email}</td>
-            <td>{officer.contact}</td>
+            <td>{officer.phone}</td>
           </tr>
         ))}
       </tbody>

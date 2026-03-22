@@ -6,7 +6,8 @@ import {
   AddRequestPayload, 
   LoanRequest, 
   LoanRequestResponse, 
-  UpdateStatusPayload } from "./studentType";
+  UpdateStatusPayload,
+UpdateStudentPayload } from "./studentType";
 
 const BASE_URL = "http://localhost:3001/api";
 
@@ -124,5 +125,25 @@ export const StudentService = {
   exportExcel: (search = "", status = "") => {
   const params = new URLSearchParams({ search, status });
   window.open(`${BASE_URL}/students/export-request?${params}`, "_blank");
+},
+updateStudent: async (studentId: number, data: UpdateStudentPayload): Promise<Student> => {
+  const res = await fetch(`${BASE_URL}/students/update-student/${studentId}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+
+  if (!res.ok) {
+    const error = await res.text();
+    throw new Error(error || "Update student failed");
+  }
+
+  const json = await res.json();
+  return json.result;
+},
+
+exportStudentExcel: (search = "") => {
+  const params = new URLSearchParams({ search });
+  window.open(`${BASE_URL}/students/export-student?${params}`, "_blank");
 },
 };

@@ -22,8 +22,11 @@ export type Student = {
   last_name: string;
   email: string;
   phone: string;
-  faculty_id?: number;    // addStudent
-  faculty_name?: string;  // getStd (JOIN faculties)
+  faculty_id?: number;   
+  faculty_name?: string;
+  branch?: string;
+  year?: string;
+  gpax?: string; 
 };
 
 export type StudentResponse = {
@@ -74,4 +77,15 @@ export type LoanRequestResponse = {
 export type UpdateStatusPayload = {
   requestId: number;
   action: "next" | "reject";
+};
+
+export type UpdateStudentPayload = {
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  phone?: string;
+  gpax?: number;
+  year?: number;
+  branch?: string;
+  facultyCode?: string;
 };

@@ -1,4 +1,4 @@
-import { CreateOfficerPayload } from "../officer/officerType";
+import { CreateOfficerPayload ,Officer,Pagination} from "../officer/officerType";
 
 const BASE_URL = "http://localhost:3001/api/officers";
 
