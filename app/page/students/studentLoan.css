@@ -1,8 +1,17 @@
+/* ============================================
+   LAYOUT
+   ============================================ */
 .student-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 24px;
-  line-height: 1px;
+}
+
+.student-header .left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .student-header .right {
@@ -16,7 +25,126 @@
   gap: 24px;
 }
 
-/* table */
+/* ============================================
+   BUTTONS
+   ============================================ */
+.primary {
+  display: inline-flex;
+  align-items: center;
+  background: #ff8c00;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.primary:hover {
+  background: #e07b00;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  color: #ff8c00;
+  border: 1px solid #ff8c00;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.link:hover {
+  background: #fff4e8;
+}
+
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ff8c00;
+  color: #fff;
+  border: 1px solid #ff8c00;
+  border-radius: 8px;
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.filter-btn:hover {
+  background: #e07b00;
+}
+
+.add-request-btn {
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  color: #ff8c00;
+  border: 1px solid #ff8c00;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s ease;
+}
+
+.add-request-btn:hover {
+  background: #fff4e8;
+}
+
+.close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  color: #888;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #000;
+}
+
+.reject-btn {
+  padding: 9px 24px;
+  border: 1px solid #e53e3e;
+  color: #e53e3e;
+  background: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.reject-btn:hover {
+  background: #fff5f5;
+}
+
+/* ============================================
+   INPUT / SEARCH
+   ============================================ */
+.search {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  width: 280px;
+  font-size: 13px;
+}
+
+/* ============================================
+   TABLE
+   ============================================ */
 .student-table {
   width: 100%;
   border-collapse: collapse;
@@ -32,6 +160,7 @@
 .student-table td {
   padding: 12px;
   border-top: 1px solid #eee;
+  font-size: 14px;
 }
 
 .student-table tr:hover {
@@ -50,45 +179,15 @@
   border-radius: 50%;
 }
 
-/* detail panel */
-.student-detail {
-  background: #fff;
-  border-radius: 12px;
-  padding: 20px;
-  text-align: center;
-}
-
-.student-detail .avatar {
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-  margin-bottom: 12px;
-}
-
-.student-detail .role {
-  font-size: 13px;
-  color: #777;
-}
-
-.student-detail .info {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.student-detail span {
-  font-size: 12px;
-  color: #888;
-}
-
+/* ============================================
+   PAGINATION
+   ============================================ */
 .pagination {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 16px;
   margin-top: 24px;
-  grid-column: 1 / -1;  
 }
 
 .pagination button {
@@ -98,6 +197,11 @@
   background: #fff;
   cursor: pointer;
   font-size: 14px;
+  transition: background 0.2s ease;
+}
+
+.pagination button:hover {
+  background: #f5f5f5;
 }
 
 .pagination button:disabled {
@@ -110,76 +214,77 @@
   color: #555;
 }
 
-.primary {
+/* ============================================
+   STATUS BADGE
+   ============================================ */
+.status-badge {
   display: inline-flex;
   align-items: center;
-  background: #ff8c00;
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
   font-weight: 500;
-  border-radius: 6px;
-  cursor: pointer;
 }
 
-.primary:hover {
-  background: #e07b00;
-}
-
-.filter-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: #ff8c00;
-  color: #fff;
-  border: 1px solid #ff8c00;
-  border-radius: 8px;
-  padding: 8px 20px;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.filter-btn:hover {
-  background: #e07b00;
-}
-
-.link {
-  display: inline-flex;
-  align-items: center;
-  background: transparent;
-  color: #ff8c00;
-  border: 1px solid #ff8c00;
-  border-radius: 6px;
-  padding: 8px 16px;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.link:hover {
+.status-badge.pending {
   background: #fff4e8;
+  color: #ff8c00;
 }
 
-/* ----------- Student Form ----------- */
+.status-badge.approved {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-badge.rejected {
+  background: #fff5f5;
+  color: #e53e3e;
+}
+
+/* ============================================
+   MODAL OVERLAY
+   ============================================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* ============================================
+   FORM
+   ============================================ */
 .student-form {
   position: relative;
   background: #ffffff;
   padding: 28px 32px;
   border-radius: 12px;
   width: 100%;
-  max-width: 900px;
+  max-width: 700px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 .student-form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 24px;
 }
 
 .student-form-header h1 {
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 700;
   color: #111;
+  margin: 0;
+}
+
+.student-form-header p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #888;
 }
 
 .form-row {
@@ -222,29 +327,6 @@
 .span-2 { grid-column: span 2; }
 .span-1 { grid-column: span 1; }
 
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.close-btn {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: transparent;
-  border: none;
-  font-size: 18px;
-  color: #888;
-  cursor: pointer;
-}
-
-.close-btn:hover { color: #000; }
-
 .form-actions {
   display: flex;
   justify-content: flex-end;
@@ -256,7 +338,60 @@
   padding: 0 28px;
 }
 
-/* ----------- Success Modal ----------- */
+/* ============================================
+   DETAIL MODAL
+   ============================================ */
+.detail-section {
+  margin-bottom: 24px;
+}
+
+.detail-section-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 24px;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.detail-item span {
+  font-size: 12px;
+  color: #999;
+  font-weight: 500;
+}
+
+.detail-item strong {
+  font-size: 14px;
+  color: #111;
+  font-weight: 600;
+}
+
+.detail-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* ============================================
+   SUCCESS MODAL
+   ============================================ */
 .success-modal {
   background: #ffffff;
   border-radius: 16px;
@@ -305,19 +440,96 @@
   padding: 0 36px;
 }
 
-.add-request-btn {
-  display: inline-flex;
-  align-items: center;
-  background: transparent;
-  color: #ff8c00;
-  border: 1px solid #ff8c00;
-  border-radius: 6px;
-  padding: 4px 12px;
-  font-size: 12px;
-  cursor: pointer;
-  white-space: nowrap;
+/* ============================================
+   STUDENT DETAIL PANEL (sidebar)
+   ============================================ */
+.student-detail {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
 }
 
-.add-request-btn:hover {
-  background: #fff4e8;
+.student-detail .avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  margin-bottom: 12px;
+}
+
+.student-detail .role {
+  font-size: 13px;
+  color: #777;
+}
+
+.student-detail .info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* ============================================
+   FILTER DROPDOWN
+   ============================================ */
+.filter-dropdown-wrapper {
+  position: relative;
+}
+
+.filter-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  color: #ff8c00;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+  margin: 0 4px;
+}
+
+.filter-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  padding: 8px 0;
+  min-width: 180px;
+  z-index: 100;
+}
+
+.filter-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+}
+
+.filter-dropdown-item:hover {
+  background: #f9f9f9;
+}
+
+.filter-dropdown-item input[type="checkbox"] {
+  accent-color: #ff8c00;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+/* ============================================
+   MISC
+   ============================================ */
+.loading-text {
+  text-align: center;
+  color: #aaa;
+  margin-top: 40px;
+  font-size: 14px;
 }
