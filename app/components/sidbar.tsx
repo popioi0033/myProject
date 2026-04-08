@@ -11,7 +11,7 @@ const Sidebar = () => {
     { label: "Officers", href: "/page/officers" },
     { label: "Students loan", href: "/page/students" },
     { label: "tracking loan", href: "/page/loan-request" },
-    { label: "Settings", href: "" },
+    { label: "Settings", href: "/page/setting" },
   ];
 
   return (
