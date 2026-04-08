@@ -1,6 +1,7 @@
 "use client";
 import AddOfficersForm from "./add-officerForm";
 import { useState } from "react";
+import { OfficerService } from "@/app/service/officer/officerService";
 
 type OfficersHeaderProps = {
   onSuccess: () => void;
@@ -24,7 +25,7 @@ const OfficersHeader = ({ onSuccess }: OfficersHeaderProps) => {
           className="search"
           placeholder="Search for officers by name or email"
         />
-        <button className="link">Export excel</button>
+        <button className="link" onClick={() => OfficerService.exportOfficerExcel()}>Export excel</button>
         <button className="primary">Confirm the officers</button>
       </div>
     </div>

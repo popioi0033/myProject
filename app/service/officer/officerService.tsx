@@ -43,4 +43,8 @@ export const OfficerService = {
 
     return res.json(); 
   },
+  exportOfficerExcel: (search = "") => {
+  const params = new URLSearchParams({ search });
+  window.open(`${BASE_URL}/export?${params}`, "_blank");
+},
 };
