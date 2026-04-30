@@ -51,4 +51,15 @@ export const LoanPeriodService = {
     }
     return res.json();
   },
+  deleteLoanPeriod: async (id: number): Promise<void> => {
+    const res = await fetch(`${BASE_URL}/loan-period/${id}`, {
+      method: "DELETE",
+      credentials: "include",
+    });
+    if (!res.ok) {
+      const error = await res.text();
+      throw new Error(error || "Delete loan period failed");
+    }
+    return res.json();
+  },
 };

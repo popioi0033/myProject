@@ -65,6 +65,16 @@ const PeriodTable = ({ refresh }: Props) => {
     }
   };
 
+  const handleDelete = async (id: number) => {
+    if (!confirm("ต้องการลบรอบนี้ใช่ไหม?")) return;
+    try {
+      await LoanPeriodService.deleteLoanPeriod(id);
+      fetchPeriods();
+    } catch (err) {
+      console.error(err);
+      alert("Delete failed");
+    }
+  };
   useEffect(() => {
     fetchPeriods();
   }, [refresh]);
@@ -104,7 +114,10 @@ const PeriodTable = ({ refresh }: Props) => {
                 <td>{period.created_by_name}</td>
                 <td>
                   <button className="add-request-btn" onClick={() => handleEditOpen(period)}>
-                    Edit
+                    แก้ไข
+                  </button>
+                  <button className="delete-btn" onClick={() => handleDelete(period.id)}>
+                    ลบ
                   </button>
                 </td>
               </tr>
@@ -151,6 +164,9 @@ const PeriodTable = ({ refresh }: Props) => {
               </div>
 
               <div className="form-actions span-4">
+                <button type="button" className="cancel-btn" onClick={() => setEditPeriod(null)}>
+                  Cancel
+                </button>
                 <button type="submit" className="primary">Save</button>
               </div>
             </div>
