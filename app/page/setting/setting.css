@@ -58,3 +58,37 @@
   background: #f5f5f5;
   color: #999;
 }
+
+.delete-btn {
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  color: #e53e3e;
+  border: 1px solid #e53e3e;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s ease;
+}
+
+.delete-btn:hover {
+  background: #fff5f5;
+}
+
+.cancel-btn {
+  padding: 9px 24px;
+  border: 1px solid #ddd;
+  color: #555;
+  background: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.cancel-btn:hover {
+  background: #f5f5f5;
+}
